@@ -1,0 +1,59 @@
+h1> Actor #<%= @the_actor.id %> details </h1>
+
+<div>
+  <a href="/actors">
+    Go back
+  </a> 
+</div>
+
+<hr>
+
+<dl>
+<dt>Name</dt>
+    <dd><%= @the_actor.name %></dd>
+  
+  <dt>Dob</dt>
+    <dd><%= @the_actor.dob %></dd>
+  
+  <dt>Bio</dt>
+    <dd><%= @the_actor.bio %></dd>
+
+  <dt>Image</dt>
+    <dd>
+      <img src="<%= @the_actor.image %>" style="width:250px">
+    </dd>
+  
+  <dt>Created at</dt>
+    <dd><%= @the_actor.created_at %></dd>
+
+  </dt>Updated at</dt>
+    <dd><%= @the_actor.updated_at %></dd>
+
+</dl>
+
+<hr>
+
+<h2> Filmography </h2>
+
+<table border="1">
+  <tr>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Director</th>
+    <th>Character name</th>
+    <th></th>
+  </tr>
+
+  <% @actor_filmography.each do |role| %>
+    <tr>
+      <td><%= role.fetch(:movie_title) %></td>
+      <td><%= role.fetch(:movie_year) %></td>
+      <td><%= role.fetch(:director) %></td>
+      <td><%= role.fetch(:character) %></td>
+      <td>
+        <a href="/movies/<%= role.fetch(:movie_id) %>">
+          Show details
+        </a>
+    </tr>
+  <% end  %>
+</table>

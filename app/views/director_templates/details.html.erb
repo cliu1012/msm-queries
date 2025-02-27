@@ -1,0 +1,69 @@
+<h1>
+  Director #<%= @the_director.id %> details
+</h1>
+
+<div>
+  <a href="/directors">
+    Go back
+  </a>
+</div>
+
+<hr> <!-- creates line break with line -->
+
+<dl>
+  <dt>Name</dt>
+    <dd><%= @the_director.name %></dd>
+
+  <dt>Dob</dt>
+    <dd><%= @the_director.dob %></dd>
+
+  <dt>Bio</dt>
+  <dd><%= @the_director.bio %></dd>
+
+  <dt>Image</dt>
+  <dd>
+    <img src="<%= @the_director.image %>" style="width:250px;">
+  </dd>
+
+  <dt>Created at</dt>
+    <dd><%= @the_director.created_at %></dd>
+  
+  <dt>Updated at</dt>
+    <dd><%= @the_director.updated_at %></dd>
+</dl>
+
+<hr> 
+
+<h2> Filmography </h2>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Director</th>
+    <th></th>
+  </tr>
+
+  <% @filmography.each do |the_movie| %>
+    <tr>
+      <td><%= the_movie.id %></td>
+
+      <td>
+        <img src="<%= the_movie.image %>" style="width:250px">
+      </td>
+
+      <td><%= the_movie.title %></td>
+
+      <td><%= the_movie.year %></td>
+
+      <td><%= @the_director.name %></td>
+
+      <td>
+        <a href="/movies/<%= the_movie.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
+  <% end %>

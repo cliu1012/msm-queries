@@ -1,0 +1,28 @@
+<h1> List of all actors </h1>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Dob</th>
+    <th></th>
+  </tr>
+
+  <% Actor.all.each do |the_actor| %>
+    <tr>
+      <td><%= the_actor.id %></td>
+      <td>
+        <img src="<%= the_actor.image %>" style="width:250px">
+      </td>
+      <td><%= the_actor.name %></td>
+      <td><%= the_actor.dob %></td>
+      <td>
+        <a href="/actors/<%= the_actor.id %>">
+          Show details
+        </a>
+    </tr>
+  <% end  %>
+</table>
